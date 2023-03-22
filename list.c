@@ -175,41 +175,56 @@ void * popCurrent(List * list) {
     // Creamos una variable con el dato a eliminar para retornarlo al final
     void* datoEliminado = nodoEliminado->data;
 
+    // Comprobamos si el nodo a eliminar es el primero de la lista
     if(nodoEliminado == list->head)
-    {
+    {   
+        // Actualizamos el head al puntero next del nodo a eliminar
         list->head = nodoEliminado->next;
 
+        // Verificamos si el head recien actualizado existe o no
         if(list->head != NULL)
-        {
+        {   
+            // Si existe actualizamos el puntero prev a NULL ya que es el primer nodo de la lista
             list->head->prev = NULL;
         }
     }
     else
-    {
+    {   
+        // Si el nodo a eliminar no es el head, entonces actualizamos el puntero next del nodo
+        // anterior al eliminado con el puntero al siguiente despues del eliminado
         nodoEliminado->prev->next = nodoEliminado->next;
     }
 
+    // Comprobamos si el nodo a eliminar es el ultimo de la lista
     if(nodoEliminado == list->tail)
     {
+        // Actualizamos el tail al puntero next del nodo a eliminar
         list->tail = nodoEliminado->prev;
 
+        // Verificamos si el tail recien actualizado existe o no
         if(list->tail != NULL)
         {
+            // Si existe actualizamos el puntero next a NULL ya que es el ultimo nodo de la lista
             list->tail->next = NULL;
         }
     }
     else
     {
+        // Si el nodo a eliminar no es el tail, entonces actualizamos el puntero prev del nodo
+        // siguinte al eliminado con el puntero al nodo anterior al nodo eliminado
         nodoEliminado->next->prev = nodoEliminado->prev;
     }
 
+    // Liberamos la memoria del nodo eliminado
     free(nodoEliminado);
 
+    // Se actualiza el current para que apunte al siguiente nodo
     if(list->current != NULL)
     {
         list->current = list->current->next;
     }
 
+    // Se retorna el dato del nodo eliminado
     return datoEliminado;
 }
 

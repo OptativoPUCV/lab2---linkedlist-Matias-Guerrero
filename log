@@ -14,3 +14,9 @@ mi., 22 de mar. de 2023 16:46:41:
  tests:  12|0
 total_score: 70/70
 4a86ebe
+mi., 22 de mar. de 2023 16:53:34: 
+ list.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+ tests:  12|0
+total_score: 70/70
+b7d49e5

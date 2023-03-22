@@ -164,7 +164,53 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    return NULL;
+    // Verificamos si existe un puntero en current, si es nulo, retornamos nulo
+    if(list->current == NULL)
+    {
+        return NULL;
+    }
+
+    // Creamos el nodo que sera eliminado, el cual es el nodo current
+    Node* nodoEliminado = list->current;
+    // Creamos una variable con el dato a eliminar para retornarlo al final
+    void* datoEliminado = nodoEliminado->data;
+
+    if(nodoEliminado == list->head)
+    {
+        list->head = nodoEliminado->next;
+
+        if(list->head != NULL)
+        {
+            list->head->prev = NULL;
+        }
+    }
+    else
+    {
+        nodoEliminado->prev->next = nodoEliminado->next;
+    }
+
+    if(nodoEliminado == list->tail)
+    {
+        list->tail = nodoEliminado->prev;
+
+        if(list->tail != NULL)
+        {
+            list->tail->next = NULL;
+        }
+    }
+    else
+    {
+        nodoEliminado->next->prev = nodoEliminado->prev;
+    }
+
+    free(nodoEliminado);
+
+    if(list->current != NULL)
+    {
+        list->current = list->current->next;
+    }
+
+    return datoEliminado;
 }
 
 void cleanList(List * list) {

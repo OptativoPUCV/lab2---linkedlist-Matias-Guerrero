@@ -8,3 +8,9 @@ mi., 22 de mar. de 2023 16:28:13:
  tests:  11|1
 total_score: 55/70
 a96fa67
+mi., 22 de mar. de 2023 16:46:41: 
+ list.c | 46 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+ tests:  12|0
+total_score: 70/70
+4a86ebe
